@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>專業倫理知識庫 | 互動學習手冊</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-oat: #FDFBF7;
+      --card-cream: #F5EFE6;
+      --card-white: #FFFDF9;
+      --text-coffee: #3E362E;
+      --text-muted: #6E6259;
+      --accent-amber: #F4A261;
+      --bg-amber: #FFF3E0;
+      --accent-sage: #6B9080;
+      --bg-sage: #EAF4F4;
+      --accent-coral: #E07A5F;
+      --bg-coral: #FDE8E4;
+      --border-warm: #E6CCB2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Zen Maru Gothic', 'Klee One', sans-serif;
+      background-color: var(--bg-oat);
+      background-image: radial-gradient(#E6CCB2 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-coffee);
+      padding: 40px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 980px;
+    }
+    .hero-card {
+      background: var(--card-white);
+      border: 3px solid var(--text-coffee);
+      border-radius: 28px;
+      padding: 36px 40px;
+      box-shadow: 8px 10px 0px #D8C3A5;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--bg-amber);
+      border: 2px dashed var(--accent-amber);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-family: 'Klee One', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      color: var(--text-coffee);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .section-heading {
+      font-family: 'Klee One', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .unit-card {
+      background: var(--card-white);
+      border: 3px solid var(--text-coffee);
+      border-radius: 24px;
+      padding: 28px 26px;
+      box-shadow: 6px 8px 0px #D8C3A5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+    .unit-card:hover {
+      transform: translateY(-4px);
+    }
+    .unit-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+    .tag-amber { background: var(--bg-amber); border: 1.5px solid var(--accent-amber); }
+    .tag-coral { background: var(--bg-coral); border: 1.5px solid var(--accent-coral); }
+    .tag-sage  { background: var(--bg-sage);  border: 1.5px solid var(--accent-sage); }
+    .unit-title {
+      font-family: 'Klee One', sans-serif;
+      font-size: 1.38rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .unit-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .play-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: var(--text-coffee);
+      color: #FFFDF9;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.02rem;
+      transition: all 0.2s ease;
+      box-shadow: 3px 4px 0px #BCA38F;
+    }
+    .play-btn:hover {
+      background: var(--accent-amber);
+      color: var(--text-coffee);
+    }
+    .updating-banner {
+      background: var(--card-cream);
+      border: 2.5px dashed #BCA38F;
+      border-radius: 20px;
+      padding: 18px 24px;
+      text-align: center;
+      font-family: 'Klee One', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero-card">
+      <div class="hero-badge">🌿 專業倫理</div>
+      <h1 class="hero-title">專業倫理知識庫，跟我一起學習倫理概念吧！</h1>
+      <p class="hero-sub">
+        這裡整理與介紹重要的專業倫理知識與決策觀念，並會不定期更新內容。在各單元的簡報卡片中，若對某個主題感興趣，也可以隨時點擊 <strong>[💡 補充 / 更多..]</strong> 按鈕來更深入了解！
+      </p>
+    </header>
+
+    <h2 class="section-heading">✨ 開始我們的學習之旅吧！</h2>
+
+    <div class="cards-grid">
+      <article class="unit-card">
+        <div>
+          <span class="unit-tag tag-amber">Unit 01 · 核心倫理觀念對決</span>
+          <h3 class="unit-title">⚖️ 動機還是結果？康德義務論與效益主義的世紀對決</h3>
+          <p class="unit-desc">
+            搞懂「正當 (The Right)」與「善 (The Good)」！為什麼康德堅持絕不能把人當工具？效益主義追求最大快樂又為什麼會有犧牲無辜者的風險？
+          </p>
+        </div>
+        <a href="presentation/01-kant-vs-utilitarianism.html" class="play-btn">🚀 開始互動簡報 (6 頁)</a>
+      </article>
+
+      <article class="unit-card">
+        <div>
+          <span class="unit-tag tag-coral">Unit 02 · 職場倫理診斷室</span>
+          <h3 class="unit-title">🩺 為什麼知道對錯卻做不到？職場三大道德衝突診斷</h3>
+          <p class="unit-desc">
+            避開主觀主義與絕對主義陷阱，一次分清楚「道德兩難 (Dilemma)」、「道德無知 (Ignorance)」與被權力/經濟綁住的「道德困擾 (Distress)」。
+          </p>
+        </div>
+        <a href="presentation/02-three-moral-conflicts.html" class="play-btn">🚀 開始互動簡報 (6 頁)</a>
+      </article>
+
+      <article class="unit-card">
+        <div>
+          <span class="unit-tag tag-sage">Unit 03 · 實務決策工具箱</span>
+          <h3 class="unit-title">☀️ 真實世界沒有完美解答：W. D. Ross 與七步決策陽光測試</h3>
+          <p class="unit-desc">
+            結合 Ross 七大自明義務、關懷倫理學與「十大核心道德原則」，學會用最後一關「陽光透明度測試 (Transparency)」做出問心無愧的好決定！
+          </p>
+        </div>
+        <a href="presentation/03-ross-and-seven-steps.html" class="play-btn">🚀 開始互動簡報 (6 頁)</a>
+      </article>
+    </div>
+
+    <div class="updating-banner">
+      🌱 手冊更新中...
+    </div>
+  </div>
+</body>
+</html>

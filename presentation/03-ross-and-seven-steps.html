@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>真實世界沒有完美解答：W. D. Ross 與七步決策陽光測試 | 專業倫理知識庫</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-oat: #FDFBF7;
+      --card-cream: #F5EFE6;
+      --card-white: #FFFDF9;
+      --text-coffee: #3E362E;
+      --text-muted: #6E6259;
+      --accent-amber: #F4A261;
+      --bg-amber: #FFF3E0;
+      --accent-sage: #6B9080;
+      --bg-sage: #EAF4F4;
+      --accent-coral: #E07A5F;
+      --bg-coral: #FDE8E4;
+      --border-warm: #E6CCB2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Zen Maru Gothic', 'Klee One', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-oat);
+      background-image: radial-gradient(#E6CCB2 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-coffee);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 16px 40px;
+    }
+    .top-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .home-btn, .nav-unit-link {
+      text-decoration: none;
+      color: var(--text-coffee);
+      background: var(--card-cream);
+      border: 2px solid var(--border-warm);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      box-shadow: 2px 3px 0px var(--border-warm);
+    }
+    .home-btn:hover, .nav-unit-link:hover {
+      transform: translateY(-2px);
+      background: var(--bg-amber);
+      border-color: var(--accent-amber);
+    }
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #E6CCB2;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .dot.active {
+      width: 28px;
+      border-radius: 999px;
+      background: var(--accent-amber);
+    }
+    .slide-card {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card-white);
+      border: 3px solid var(--text-coffee);
+      border-radius: 28px;
+      padding: 36px 40px;
+      box-shadow: 8px 10px 0px #D8C3A5;
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .sticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-amber);
+      border: 2px dashed var(--accent-amber);
+      color: var(--text-coffee);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transform: rotate(-1deg);
+    }
+    .page-counter {
+      font-family: 'Klee One', cursive;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      background: var(--card-cream);
+      padding: 4px 14px;
+      border-radius: 12px;
+    }
+    .slide-title {
+      font-family: 'Klee One', 'Zen Maru Gothic', sans-serif;
+      font-size: 1.85rem;
+      line-height: 1.35;
+      color: var(--text-coffee);
+      margin-bottom: 22px;
+      border-bottom: 3px dotted var(--border-warm);
+      padding-bottom: 12px;
+    }
+    .visual-content {
+      font-size: 1.15rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 14px 0;
+    }
+    .note-box {
+      background: var(--card-cream);
+      border: 2px solid var(--border-warm);
+      border-radius: 20px;
+      padding: 18px 22px;
+      box-shadow: 3px 4px 0px rgba(62,54,46,0.08);
+    }
+    .note-box.amber { background: var(--bg-amber); border-color: var(--accent-amber); }
+    .note-box.coral { background: var(--bg-coral); border-color: var(--accent-coral); }
+    .note-box.sage  { background: var(--bg-sage);  border-color: var(--accent-sage); }
+    .note-box h4 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .note-box ul {
+      padding-left: 20px;
+    }
+    .note-box li {
+      margin-bottom: 6px;
+    }
+    .highlight {
+      background: linear-gradient(transparent 55%, #FFE082 55%);
+      font-weight: 700;
+      padding: 0 4px;
+    }
+    .guiding-box {
+      background: var(--bg-sage);
+      border: 2.5px solid var(--accent-sage);
+      border-radius: 20px;
+      padding: 16px 22px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .guiding-label {
+      font-weight: 700;
+      color: #3B594C;
+      font-size: 1rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .guiding-text {
+      font-family: 'Klee One', sans-serif;
+      font-size: 1.12rem;
+      color: var(--text-coffee);
+      line-height: 1.6;
+    }
+    .more-section {
+      margin-bottom: 24px;
+    }
+    .more-btn {
+      background: var(--bg-amber);
+      color: var(--text-coffee);
+      border: 2px solid var(--accent-amber);
+      padding: 9px 20px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 2px 3px 0px #E6CCB2;
+    }
+    .more-btn:hover {
+      background: #FFE0B2;
+      transform: translateY(-1px);
+    }
+    .more-drawer {
+      display: none;
+      margin-top: 12px;
+      background: #FAF6F0;
+      border: 2px dashed #C8B6A6;
+      border-radius: 18px;
+      padding: 16px 22px;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .more-drawer.open {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 2px solid var(--card-cream);
+      padding-top: 18px;
+      margin-top: auto;
+    }
+    .ctrl-btn {
+      background: var(--text-coffee);
+      color: #FFFDF9;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 3px 4px 0px #BCA38F;
+    }
+    .ctrl-btn:hover:not(:disabled) {
+      background: #584B3F;
+      transform: translateY(-2px);
+    }
+    .ctrl-btn:disabled {
+      background: #D6C7B8;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .kbd-hint {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    @media (max-width: 640px) {
+      .slide-card { padding: 24px 20px; }
+      .slide-title { font-size: 1.45rem; }
+      .visual-content { font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="../index.html" class="home-btn">🏠 返回課程總目錄</a>
+    <div class="progress-wrap" id="dotsContainer"></div>
+    <div style="display:flex; gap:8px;">
+      <a href="02-three-moral-conflicts.html" class="nav-unit-link">⏮️ 上一單元</a>
+      
+    </div>
+  </div>
+
+  <main class="slide-card">
+    <div>
+      <div class="slide-header">
+        <span class="sticker-badge" id="slideTag">Unit 03 · 實務決策工具箱</span>
+        <span class="page-counter" id="pageCounter">Slide 01 / 06</span>
+      </div>
+
+      <h1 class="slide-title" id="slideTitle">載入中...</h1>
+
+      <div class="visual-content" id="visualContent"></div>
+    </div>
+
+    <div>
+      <div class="guiding-box">
+        <div class="guiding-label">💭 想一想 · 互動小提問 (Guiding Question)</div>
+        <div class="guiding-text" id="guidingText"></div>
+      </div>
+
+      <div class="more-section">
+        <button class="more-btn" id="moreBtn" onclick="toggleMore()">
+          <span>💡 補充 / 更多..</span>
+          <span id="moreArrow">▾</span>
+        </button>
+        <div class="more-drawer" id="moreDrawer"></div>
+      </div>
+
+      <div class="slide-footer">
+        <button class="ctrl-btn" id="prevBtn" onclick="changeSlide(-1)">⬅️ 上一頁</button>
+        <span class="kbd-hint">✨ 支援鍵盤 ◀ ▶ 方向鍵翻頁</span>
+        <button class="ctrl-btn" id="nextBtn" onclick="changeSlide(1)">下一頁 ➡️</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const slides = [{"tag": "🏷️ Unit 03 · 實務決策工具箱", "title": "🛠️ 在混亂的真實世界裡，做一個溫暖而堅定的決定", "visual": "\n          <div class=\"note-box amber\">\n            <h4>🌟 當理想理論遇上複雜現實⋯⋯</h4>\n            <p>如果康德規則太剛性、效益主義又怕犧牲無辜少數，我們在真實職場與人際關係中到底該怎麼辦？</p>\n          </div>\n          <p style=\"margin-top:14px;\">本單元結合 <strong>W. D. Ross 的顯見義務論</strong>、<strong>關懷倫理學</strong> 與 <strong>十大道德原則 + 陽光透明度測試</strong>，給你一套最接地氣的實戰指南！</p>\n        ", "question": "「你覺得一個『成熟又有溫度的專業工作者』，在做決定時除了看規章條文，還會把哪些事情放在心上？」", "more": "真實職場中的倫理決策無法單靠死背單一教條，而是需要一套整合性的思考框架——既重視原則與義務，又同時兼顧實際造成的後果與人際關懷關係。"}, {"tag": "🎒 W. D. Ross · 顯見義務論", "title": "🤝 W. D. Ross：道德決策本就是一場「混亂的事業 (Messy Business)」", "visual": "\n          <div class=\"grid-2\">\n            <div class=\"note-box amber\">\n              <h4>⚖️ 義務論 + 結果考量</h4>\n              <p>Ross 雖是義務論學者，但他主張決策<span class=\"highlight\">必須考量後果</span>：要做到<strong>不傷害 (Non-maleficence)</strong> 並帶來好結果 <strong>(行善 Beneficence)</strong>！</p>\n            </div>\n            <div class=\"note-box\">\n              <h4>🌟 七大自明義務 (Self-evident)</h4>\n              <p>① 誠實 · ② 守信 · ③ 助人 · ④ 正義（分配資源） · ⑤ 感恩 · ⑥ 補償傷害 · ⑦ 自我提升</p>\n            </div>\n          </div>\n          <p style=\"margin-top:10px;\">💡 Ross 提醒我們：日常充滿兩難，我們要同時看顧<strong>過去的責任</strong>與<strong>未來的影響</strong>，勇敢擁抱無法避免的<strong>「道德風險 (Moral Risk)」</strong>！</p>\n        ", "question": "「Ross 說我們做決定時必須『同時注意過去發生過什麼，以及未來會如何受影響』，你能從七大義務中找出哪幾個跟『過去』有關嗎？」", "more": "在 Ross 的七大自明義務中，「守信（過去許下的諾言）」、「感恩（過去受人的恩惠）」與「補償（過去造成的傷害）」都源於我們過去發生過的行動；而「助人/行善」與「不傷害」則聚焦於我們的行動將對未來產生什麼影響。"}, {"tag": "💞 Ethics of Care · 關懷倫理學", "title": "🌱 關懷倫理學 (Gilligan & Noddings)：別忘了眼前「具體的人與關係」", "visual": "\n          <div class=\"note-box coral\">\n            <h4>💞 核心主張：聚焦於「人與關係 (Persons & Relationships)」</h4>\n            <ul>\n              <li>不存在脫離了具體人物、情境與關係還能獨立運作的冰冷對錯！</li>\n              <li>只要一個行動能<span class=\"highlight\">表達對他人的關懷、維繫或深化關懷關係</span>，它就是正當的（呼應決策模型 Step III 重視利害關係人與專業關係網路）。</li>\n            </ul>\n          </div>\n          <p style=\"margin-top:10px;\">⚠️ <strong>兩大理論提醒</strong>：(1) 較難解釋如何從「關懷情感」直接推導出「具體正確行動」；(2) 每個人與文化對「關懷」定義不同，難以一體適用。</p>\n        ", "question": "「你有沒有遇過有人懷著滿滿的關心想幫你，卻因為『每個人對關懷的定義不同』反而讓你倍感壓力？這給我們什麼啟示？」", "more": "Carol Gilligan 與 Nel Noddings 的關懷倫理學補齊了傳統倫理學過度強調抽象規則的缺口，提醒我們在評估利害關係人（Step III）時，必須仔細體察各方之間的關係連結，以及專業人員彼此之間的互動脈絡。"}, {"tag": "🛡️ Step IV · 10 Moral Principles", "title": "💎 職場與人生必備：十大核心道德原則一覽", "visual": "\n          <div class=\"grid-2\">\n            <div class=\"note-box amber\">\n              <h4>🛡️ 尊重、底線與誠信 (1~5)</h4>\n              <ul>\n                <li><strong>A. 尊嚴 (Dignity)</strong>：尊重自主權，不把人當工具</li>\n                <li><strong>B. 不傷害 (Non-maleficence)</strong>：無正當理由不傷人</li>\n                <li><strong>C. 忠誠守信 (Fidelity)</strong>：信守明示與隱含承諾</li>\n                <li><strong>D. 補償 (Reparation)</strong>：修復直接/間接或粗心造成的傷害</li>\n                <li><strong>E. 誠實 (Honesty)</strong>：不公開或隱晦欺騙</li>\n              </ul>\n            </div>\n            <div class=\"note-box sage\">\n              <h4>⚖️ 行善、正義與品格 (6~10)</h4>\n              <ul>\n                <li><strong>F. 行善 (Beneficence)</strong>：改善受照顧/指導者的處境</li>\n                <li><strong>G. 分配正義 (Distributive)</strong>：公平分配社會資源與機會</li>\n                <li><strong>H. 形式正義 (Formal)</strong>：依相關因素公正回報、不偏私</li>\n                <li><strong>I. 感恩 (Gratitude)</strong>：對他人善意表達感謝與回報</li>\n                <li><strong>J. 自我提升 (Self-improvement)</strong>：培養敏感度與辨識力</li>\n              </ul>\n            </div>\n          </div>\n        ", "question": "「在『補償原則 (Reparation)』中，如果不是故意的、只是因為『無知或粗心 (Ignorance or carelessness)』造成的傷害，我們還需要補償嗎？」", "more": "答案是<strong>需要！</strong>補償義務（Duty of Reparation）不僅涵蓋故意或重大過失造成的傷害，也明確包含因「無知或粗心」所導致的直接與間接傷害。此外，在決策時還需同時檢視所有成熟個體皆受約束的「一般原則（General principles）」與特定職業的「角色專屬原則（Role-specific principles，如職業倫理守則）」。"}, {"tag": "🔍 Step V & VI · 職場四問與衍生義務", "title": "🧭 拍板定案前：職場四大檢核問題與衍生義務", "visual": "\n          <div class=\"note-box\">\n            <h4>🔍 Step V：在職場與同事間做決定時的 4 個自問</h4>\n            <ul>\n              <li>1️⃣ <strong>創意最佳解</strong>：是否已考慮所有可能方案，以尋求最佳、最具創意的解方？</li>\n              <li>2️⃣ <strong>品格影響</strong>：這個選擇會如何影響「決策者自己」與「受影響者」的品格 (Character)？</li>\n              <li>3️⃣ <strong>執行可行性</strong>：擬議的方案在現實中能多有效地被落實？</li>\n              <li>4️⃣ <strong>共榮環境</strong>：哪個決定最能創造讓個人與群體都能<span class=\"highlight\">蓬勃發展 (Flourish)</span> 的環境？</li>\n            </ul>\n          </div>\n          <p style=\"margin-top:10px;\">🩹 <strong>Step VI 衍生義務 (Emergent Obligations)</strong>：選出最佳方案後，別忘了確認是否產生了新的善後、告知或補償義務！</p>\n        ", "question": "「這四個問題裡，第 2 題問『這個決定會如何影響你自己的品格』——為什麼做決定不只要看事情有沒有解決，還要看『這會把我們變成什麼樣的人』？」", "more": "這呼應了美德倫理與十大原則中的「自我提升（Self-improvement）」。每一次的職場選擇都在塑造我們的品格，培養我們的道德敏感度（Moral sensitivity）、辨識力（Discernment）與行動決心（Resolve）。"}, {"tag": "☀️ Step VII · Commitment to Transparency", "title": "☀️ 最終回：攤在陽光下的「透明度測試 (Transparency Test)」", "visual": "\n          <div class=\"note-box amber\" style=\"text-align:center; padding:26px;\">\n            <h4 style=\"justify-content:center; font-size:1.35rem;\">📣 決策最後一關：陽光透明度承諾</h4>\n            <p style=\"font-size:1.2rem; margin-top:10px;\">\n              「當我做出並落實這個決定後，如果我的<span class=\"highlight\">主管、經理、系主任、院長、老闆或同事</span>問起，<br>\n              我願不願意大方地把<strong>『我做了什麼決定』</strong>以及<strong>『我推導出這個決定的完整過程』</strong>全部分享給他們聽？」\n            </p>\n          </div>\n          <p style=\"margin-top:14px; text-align:center;\">🎉 <strong>恭喜完成三大單元！</strong> 真實世界雖有道德風險，但走過完整七步驟且經得起陽光檢驗，就是最棒的專業倫理決策！</p>\n        ", "question": "「把『敢不敢向主管與同事公開決策過程』當作最後一關，你覺得這能幫我們過濾掉哪些不妥的決定？」", "more": "<strong>延伸探索書單</strong>：<br>1. W. D. Ross (1930), <em>The Right and the Good</em>（顯見義務論原典）<br>2. Carol Gilligan (1982), <em>In a Different Voice</em> / Nel Noddings (1984), <em>Caring</em><br>3. Beauchamp & Childress, <em>Principles of Biomedical Ethics</em>。"}];
+    let currentIndex = 0;
+
+    const dotsContainer = document.getElementById('dotsContainer');
+    const slideTag = document.getElementById('slideTag');
+    const pageCounter = document.getElementById('pageCounter');
+    const slideTitle = document.getElementById('slideTitle');
+    const visualContent = document.getElementById('visualContent');
+    const guidingText = document.getElementById('guidingText');
+    const moreDrawer = document.getElementById('moreDrawer');
+    const moreArrow = document.getElementById('moreArrow');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function initDots() {
+      dotsContainer.innerHTML = '';
+      slides.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (idx === currentIndex ? ' active' : '');
+        dot.onclick = () => goToSlide(idx);
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function renderSlide() {
+      const s = slides[currentIndex];
+      slideTag.innerHTML = s.tag;
+      pageCounter.textContent = `📌 Slide 0${currentIndex + 1} / 0${slides.length}`;
+      slideTitle.innerHTML = s.title;
+      visualContent.innerHTML = s.visual;
+      guidingText.innerHTML = s.question;
+      moreDrawer.innerHTML = s.more;
+      moreDrawer.classList.remove('open');
+      moreArrow.textContent = '▾';
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === slides.length - 1;
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((d, idx) => {
+        d.className = 'dot' + (idx === currentIndex ? ' active' : '');
+      });
+    }
+
+    function changeSlide(step) {
+      const next = currentIndex + step;
+      if (next >= 0 && next < slides.length) {
+        currentIndex = next;
+        renderSlide();
+      }
+    }
+
+    function goToSlide(idx) {
+      currentIndex = idx;
+      renderSlide();
+    }
+
+    function toggleMore() {
+      const isOpen = moreDrawer.classList.toggle('open');
+      moreArrow.textContent = isOpen ? '▴' : '▾';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    initDots();
+    renderSlide();
+  </script>
+</body>
+</html>
